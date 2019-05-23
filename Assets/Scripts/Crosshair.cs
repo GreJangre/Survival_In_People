@@ -8,12 +8,12 @@ public class Crosshair : MonoBehaviour
 
     private float gunAccurancy;
 
-    [SerializeField] private GameObject go_CrosshairHUD;
+    //[SerializeField] private GameObject go_CrosshairHUD;
 
-    public void WalkingAnimation(bool flag)
+    public void WalkingAnimation(bool _flag)
     {
-        WeaponManager.currentWeaponAnim.SetBool("Walk", flag);
-        animator.SetBool("Walking", flag);
+        WeaponManager.currentWeaponAnim.SetBool("Walk", _flag);
+        animator.SetBool("Walking", _flag);
     }
 
     public void RunningAnimation(bool _flag)

@@ -21,8 +21,7 @@ public class Rock : MonoBehaviour
     public void Mining()
     {
         SoundManager.instance.PlaySoundEffect(strikeSound);
-        Debug.Log("현짱의 테스트 커밋");
-        
+
         var clone = Instantiate(goEffectPrefabs, col.bounds.center, Quaternion.identity);
         Destroy(clone, destroyTime);
         
