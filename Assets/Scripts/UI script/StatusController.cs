@@ -72,6 +72,43 @@ public class StatusController : MonoBehaviour
         images_Gauge[DP].fillAmount = (float) currentDp / dp;
     }
 
+    public void IncreaseHp(int count)
+    {
+        if (currentHp + count < hp)
+            currentHp += count;
+        else
+            currentHp = hp;
+    }
+
+    public void DecreaseHp(int count)
+    {
+        if (currentDp > 0)
+        {
+            DecreaseDp(count);
+            return;
+        }
+        currentHp -= count;
+        
+        if (currentHp <= 0)
+            Debug.Log("체력이 없어요.");
+    }
+    
+    public void IncreaseDp(int count)
+    {
+        if (currentDp + count < dp)
+            currentDp += count;
+        else
+            currentDp = dp;
+    }
+
+    public void DecreaseDp(int count)
+    {
+        currentDp -= count;
+        
+        if (currentDp <= 0)
+            Debug.Log("방어력이 없어요.");
+    }
+    
     public void DecreaseStamina(int count)
     {
         spUsed = true;
@@ -81,5 +118,10 @@ public class StatusController : MonoBehaviour
             currentSp -= count;
         else
             currentSp = 0;
+    }
+
+    public int GetCurrentSp()
+    {
+        return currentSp;
     }
 }

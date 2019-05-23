@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
     // 점프 시도
     private void TryJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isGround && theStatusController.GetCurrentSp() > 200)
         {
             Jump();
         }
@@ -146,19 +146,19 @@ public class PlayerController : MonoBehaviour
         if (isCrouch)
             Crouch();
         
-        theStatusController.DecreaseStamina(100);
+        theStatusController.DecreaseStamina(200);
         myRigid.velocity = transform.up * jumpForce;
     }
     
     // 달리기 시도
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && theStatusController.GetCurrentSp() >= 7)
         {
             Running();
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || theStatusController.GetCurrentSp() < 7)
         {
             RunningCancel();
         }
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         
         isRun = true;
         theCrossghair.RunningAnimation(isRun);
-        theStatusController.DecreaseStamina(5);
+        theStatusController.DecreaseStamina(7);
         _applySpeed = runSpeed;
     }
 
