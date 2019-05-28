@@ -18,6 +18,7 @@ public class AxeController : CloseWeaponController
         if (isActivate)
         {
             TryAttack();
+            Debug.log("attack")
         }
     }
     protected override IEnumerator HitCoroutine()
